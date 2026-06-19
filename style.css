@@ -166,7 +166,9 @@ body {
 }
 .cat {
     position: absolute;
-    left: 0%;
-    top: 0%;
-    transform: translate(-50%, -50%);
+    left: 0;
+    top: 0;
+    width: 8px;
+    height: 8px;
+    background: red;
 }
