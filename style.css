@@ -164,11 +164,3 @@ body {
     120px 120px #000000,
     136px 120px #000000;
 }
-.cat {
-    width: 176px;
-    height: 104px;
-    position: absolute;
-    left: 70%;
-    top: 50%;
-    transform: translate(-50%, -50%);
-}
