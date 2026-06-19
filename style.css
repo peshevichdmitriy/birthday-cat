@@ -161,3 +161,8 @@ body {
     120px 120px #000000,
     136px 120px #000000;
 }
+.cat {
+    width: 192px;
+    height: 152px;
+    position: relative;
+}
