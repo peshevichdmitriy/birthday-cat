@@ -23,11 +23,43 @@
         }
     </style>
 </head>
+
 <body>
 
 <div class="scene">
         <div class="cat"></div>
+
+        <div class="dialog">
+        <p id="text">🐱 Сегодня очень важный день... Нужно подготовить подарок! 🎁</p>
+
+        <button id="nextBtn">Начать</button>
+        </div>
 </div>
+
+<script>
+    const text = document.getElementById("text");
+    const btn = document.getElementById("nextBtn");
+
+    let step = 0;
+
+    btn.addEventListener("click", () => {
+
+        if(step === 0){
+
+            text.textContent =
+            "Для красивого подарка нужен бантик. Найди его! 🎀";
+
+            btn.style.display = "none";
+
+            // дальше здесь появится первая игра
+
+            step++;
+        }
+
+    });
+</script>
+
+
 
 </body>
 </html>

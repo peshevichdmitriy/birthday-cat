@@ -170,3 +170,29 @@ body {
     position: relative;
     margin: 0;
 }
+.dialog {
+    margin-top: 40px;
+    text-align: center;
+}
+
+#text {
+    font-size: 22px;
+    color: #7a3d59;
+    margin-bottom: 20px;
+}
+
+#nextBtn {
+    padding: 12px 28px;
+    font-size: 18px;
+    border: none;
+    border-radius: 15px;
+    background: #ff8db1;
+    color: white;
+    cursor: pointer;
+    transition: .2s;
+}
+
+#nextBtn:hover {
+    transform: scale(1.05);
+    background: #ff77a0;
+}
