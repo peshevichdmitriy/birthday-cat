@@ -161,8 +161,9 @@ body {
     120px 120px #000000,
     136px 120px #000000;
 }
-.cat-wrapper {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-}
+.cat {
+     position: absolute;
+     left: 50%;
+     top: 38%;
+     transform: translate(-50%, -50%);
+ }
