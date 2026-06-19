@@ -2,6 +2,7 @@ body {
   margin: 0;
   min-height: 100vh;
   background: #ffd6e7;
+  position: relative;
 
   display: flex;
   justify-content: center;
@@ -162,8 +163,10 @@ body {
     136px 120px #000000;
 }
 .cat {
-     position: absolute;
-     left: 50%;
-     top: 38%;
-     transform: translate(-50%, -50%);
- }
+  width: 8px;
+  height: 8px;
+  position: absolute;
+  left: 50%;
+  top: 38%;
+  transform: translate(-50%, -50%);
+}
