@@ -1,0 +1,163 @@
+body {
+  margin: 0;
+  min-height: 100vh;
+  background: #ffd6e7;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  font-family: -apple-system, BlinkMacSystemFont, sans-serif;
+}
+
+.scene {
+  text-align: center;
+}
+
+.hint {
+  margin-top: 60px;
+  color: #8a4f67;
+  font-size: 18px;
+}
+
+.cat {
+ width:8px;height:8px;position:relative;margin:40px auto;
+}
+.cat::before {
+ content:"";
+ position:absolute;
+ width:8px;height:8px;
+ background:transparent;
+ box-shadow:
+
+    48px 24px #000000,
+    56px 24px #000000,
+    104px 24px #000000,
+    112px 24px #000000,
+    48px 32px #000000,
+    56px 32px #fdad56,
+    64px 32px #000002,
+    96px 32px #000002,
+    104px 32px #fdad56,
+    112px 32px #000000,
+    48px 40px #000000,
+    56px 40px #fdad56,
+    64px 40px #fdad56,
+    72px 40px #010000,
+    80px 40px #010000,
+    88px 40px #010000,
+    96px 40px #fdad56,
+    104px 40px #fdad56,
+    112px 40px #000000,
+    48px 48px #000000,
+    56px 48px #fdad56,
+    64px 48px #fdad56,
+    72px 48px #ff8800,
+    80px 48px #ff8800,
+    88px 48px #ff8800,
+    96px 48px #fdad56,
+    104px 48px #fdad56,
+    112px 48px #000000,
+    40px 56px #000000,
+    48px 56px #fdad56,
+    56px 56px #fdad56,
+    64px 56px #fdad56,
+    72px 56px #fdad56,
+    80px 56px #fdad56,
+    88px 56px #fdad56,
+    96px 56px #fdad56,
+    104px 56px #fdad56,
+    112px 56px #fdad56,
+    120px 56px #000000,
+    144px 56px #000000,
+    152px 56px #000000,
+    40px 64px #000000,
+    48px 64px #fdad56,
+    56px 64px #fdad56,
+    64px 64px #fdad56,
+    72px 64px #fdad56,
+    80px 64px #fdad56,
+    88px 64px #fdad56,
+    96px 64px #fdad56,
+    104px 64px #fdad56,
+    112px 64px #fdad56,
+    120px 64px #000000,
+    144px 64px #000000,
+    152px 64px #fdad56,
+    160px 64px #000000,
+    40px 72px #000000,
+    48px 72px #fdad56,
+    56px 72px #000002,
+    64px 72px #fdad56,
+    72px 72px #fdad56,
+    80px 72px #fdad56,
+    88px 72px #000002,
+    96px 72px #fdad56,
+    104px 72px #fdad56,
+    112px 72px #fdad56,
+    120px 72px #000000,
+    144px 72px #000002,
+    152px 72px #fe8800,
+    160px 72px #000000,
+    40px 80px #000000,
+    48px 80px #fbae56,
+    56px 80px #fdad58,
+    88px 80px #fdad56,
+    96px 80px #fdad56,
+    104px 80px #fdad56,
+    112px 80px #feac58,
+    120px 80px #000000,
+    136px 80px #010000,
+    144px 80px #fead54,
+    152px 80px #fdad56,
+    160px 80px #000000,
+    48px 88px #000000,
+    96px 88px #fdad54,
+    104px 88px #fdad54,
+    112px 88px #a20137,
+    120px 88px #000002,
+    128px 88px #000002,
+    136px 88px #fdad56,
+    144px 88px #fe8705,
+    152px 88px #000000,
+    56px 96px #000000,
+    64px 96px #a20133,
+    72px 96px #a20133,
+    80px 96px #a20133,
+    88px 96px #a20133,
+    96px 96px #a20133,
+    104px 96px #a20133,
+    112px 96px #fe8800,
+    120px 96px #fdad56,
+    128px 96px #fe8800,
+    136px 96px #fdad58,
+    144px 96px #000000,
+    56px 104px #000000,
+    64px 104px #fdad56,
+    72px 104px #fdad56,
+    80px 104px #fdad56,
+    88px 104px #fdad56,
+    96px 104px #fdad56,
+    104px 104px #fdad56,
+    112px 104px #fd8700,
+    120px 104px #fdad56,
+    128px 104px #fe8800,
+    136px 104px #000000,
+    56px 112px #000000,
+    64px 112px #fbae54,
+    72px 112px #fbae54,
+    80px 112px #fbae54,
+    88px 112px #fbae54,
+    96px 112px #fbae54,
+    104px 112px #fbae54,
+    112px 112px #fbae54,
+    120px 112px #fbae54,
+    128px 112px #fbae54,
+    136px 112px #000000,
+    56px 120px #000000,
+    72px 120px #000000,
+    88px 120px #000000,
+    96px 120px #000000,
+    120px 120px #000000,
+    136px 120px #000000;
+}
