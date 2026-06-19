@@ -27,6 +27,8 @@ body {
 .cat::before {
  content:"";
  position:absolute;
+ left: 0;
+ top: 0;
  width:8px;height:8px;
  background:transparent;
  box-shadow:
@@ -166,4 +168,5 @@ body {
     width: 128px;
     height: 104px;
     position: relative;
+    margin: 0;
 }
