@@ -161,7 +161,8 @@ body {
     120px 120px #000000,
     136px 120px #000000;
 }
-.cat {
-    position: relative;
-    transform: scale(1);
+.cat-wrapper {
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
