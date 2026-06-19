@@ -27,6 +27,8 @@ body {
 .cat::before {
  content:"";
  position:absolute;
+ left: -48px;
+ top: -24px;
  width:8px;height:8px;
  background:transparent;
  box-shadow:
@@ -163,9 +165,10 @@ body {
     136px 120px #000000;
 }
 .cat {
-  width: 8px;
-  height: 8px;
-  position: absolute;
-  left: calc(50% - 50px);
-  top: 38%;
+    width: 176px;
+    height: 104px;
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
 }
