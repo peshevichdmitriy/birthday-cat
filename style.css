@@ -171,4 +171,5 @@ body {
     width: 8px;
     height: 8px;
     background: red;
+    transform: translate(-50%, -50%);
 }
