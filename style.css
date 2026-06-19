@@ -165,11 +165,7 @@ body {
     136px 120px #000000;
 }
 .cat {
-    position: absolute;
-    left: 50%;
-    top: 50%;
     width: 8px;
     height: 8px;
-    background: red;
-    transform: translate(-50%, -50%);
+    position: relative;
 }
