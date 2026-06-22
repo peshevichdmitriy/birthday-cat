@@ -196,3 +196,22 @@ body {
     transform: scale(1.05);
     background: #ff77a0;
 }
+
+.items {
+    margin-top: 35px;
+
+    display: flex;
+    justify-content: center;
+    gap: 25px;
+
+    font-size: 42px;
+}
+
+.item {
+    cursor: pointer;
+    transition: .2s;
+}
+
+.item:hover {
+    transform: scale(1.25);
+}

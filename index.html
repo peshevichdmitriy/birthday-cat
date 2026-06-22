@@ -34,6 +34,14 @@
 
         <button id="nextBtn">Начать</button>
         </div>
+
+        <div id="items" class="items" style="display:none;">
+            <span class="item">⭐</span>
+            <span class="item">🐟</span>
+            <span class="item" id="bow">🎀</span>
+            <span class="item">🧶</span>
+            <span class="item">🌸</span>
+        </div>
 </div>
 
 <script>
@@ -50,6 +58,7 @@
             "Для красивого подарка нужен бантик. Найди его! 🎀";
 
             btn.style.display = "none";
+            document.getElementById("items").style.display = "flex";
 
             // дальше здесь появится первая игра
 
@@ -57,6 +66,16 @@
         }
 
     });
+    const bow = document.getElementById("bow");
+
+        bow.addEventListener("click", () => {
+
+    text.textContent =
+    "Отлично! Бантик найден! 🎀";
+
+    document.getElementById("items").style.display = "none";
+
+});
 </script>
 
 
