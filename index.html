@@ -36,46 +36,230 @@
         </div>
 
         <div id="items" class="items" style="display:none;">
-            <span class="item">⭐</span>
-            <span class="item">🐟</span>
+            <span class="item wrong">⭐</span>
+            <span class="item wrong">🐟</span>
             <span class="item" id="bow">🎀</span>
-            <span class="item">🧶</span>
-            <span class="item">🌸</span>
+            <span class="item wrong">🧶</span>
+            <span class="item wrong">🌸</span>
+        </div>
+
+        <div id="game" style="display:none;">
+            <p id="score">Собрано: 0/5 ❤️</p>
         </div>
 </div>
 
 <script>
     const text = document.getElementById("text");
-    const btn = document.getElementById("nextBtn");
+const btn = document.getElementById("nextBtn");
+const items = document.getElementById("items");
+const game = document.getElementById("game");
 
-    let step = 0;
+btn.addEventListener("click", startGame);
 
-    btn.addEventListener("click", () => {
+function startGame() {
 
-        if(step === 0){
-
-            text.textContent =
-            "Для красивого подарка нужен бантик. Найди его! 🎀";
-
-            btn.style.display = "none";
-            document.getElementById("items").style.display = "flex";
-
-            // дальше здесь появится первая игра
-
-            step++;
-        }
-
-    });
-    const bow = document.getElementById("bow");
-
-        bow.addEventListener("click", () => {
+    btn.style.display = "none";
 
     text.textContent =
-    "Отлично! Бантик найден! 🎀";
+        "Для красивого подарка нужен бантик. Найди его! 🎀";
 
-    document.getElementById("items").style.display = "none";
+    showBowGame();
+}
 
-});
+// ==========================
+// Игра с бантиком
+// ==========================
+
+function showBowGame() {
+
+    items.style.display = "flex";
+
+    items.innerHTML = `
+        <span class="item wrong">⭐</span>
+        <span class="item wrong">🐟</span>
+        <span class="item" id="bow">🎀</span>
+        <span class="item wrong">🧶</span>
+        <span class="item wrong">🌸</span>
+    `;
+
+    document.getElementById("bow").addEventListener("click", () => {
+
+        text.textContent =
+            "🎀 Отлично! Бантик найден! Теперь нужен красивый цветок.";
+
+        showFlowerGame();
+
+    });
+
+    addWrongItemListeners();
+}
+
+// ==========================
+// Игра с цветком
+// ==========================
+
+function showFlowerGame() {
+
+    items.innerHTML = `
+        <span class="item wrong">⭐</span>
+        <span class="item wrong">🐟</span>
+        <span class="item wrong">🧶</span>
+        <span class="item wrong">❤️</span>
+        <span class="item" id="flower">🌸</span>
+    `;
+
+    document.getElementById("flower").addEventListener("click", () => {
+
+        items.style.display = "none";
+
+        text.textContent =
+            "🌸 Отлично! Теперь поймай 5 сердечек!";
+
+        startHeartGame();
+
+    });
+
+    addWrongItemListeners();
+}
+
+// ==========================
+// Неправильные предметы
+// ==========================
+
+function addWrongItemListeners() {
+
+    const wrongItems = document.querySelectorAll(".wrong");
+
+    wrongItems.forEach(item => {
+
+        item.addEventListener("click", () => {
+
+            text.textContent =
+                "🐱 Нет-нет! Сейчас нужен другой предмет.";
+
+            item.style.opacity = "0.4";
+
+        });
+
+    });
+
+}
+
+// ==========================
+// Сердечки
+// ==========================
+
+function startHeartGame() {
+
+    game.style.display = "block";
+
+    game.innerHTML = `
+        <p id="score">Собрано: 0/5 ❤️</p>
+    `;
+
+    const score = document.getElementById("score");
+
+    let count = 0;
+
+    function createHeart() {
+
+        const heart = document.createElement("span");
+
+        heart.className = "heart";
+        heart.textContent = "❤️";
+
+        const size = game.clientWidth - 40;
+        const height = game.clientHeight - 40;
+
+        let x = Math.random() * size;
+        let y = Math.random() * height;
+
+        let dx = (Math.random() * 4 + 2) * (Math.random() > 0.5 ? 1 : -1);
+        let dy = (Math.random() * 4 + 2) * (Math.random() > 0.5 ? 1 : -1);
+
+        heart.style.left = x + "px";
+        heart.style.top = y + "px";
+
+        game.appendChild(heart);
+
+        let removed = false;
+
+        function move() {
+
+            if (removed) return;
+
+            x += dx;
+            y += dy;
+
+            if (x <= 0 || x >= size) dx *= -1;
+            if (y <= 0 || y >= height) dy *= -1;
+
+            heart.style.left = x + "px";
+            heart.style.top = y + "px";
+
+            requestAnimationFrame(move);
+    }
+
+            requestAnimationFrame(move);
+
+                heart.addEventListener("click", () => {
+
+                removed = true;
+                heart.remove();
+
+                count++;
+
+                score.textContent = `Собрано: ${count}/5 ❤️`;
+
+                    if (count >= 5) {
+                        showGift();
+                    } else {
+                        createHeart();
+            }
+
+    });
+
+}
+
+    for (let i = 0; i < 5; i++) {
+        createHeart();
+    }
+
+}
+
+// ==========================
+// Подарок
+// ==========================
+
+function showGift() {
+
+    text.textContent =
+        "🎁 Ты всё собрала! Открой подарок!";
+
+    game.innerHTML = `
+        <div id="gift" style="font-size:90px; cursor:pointer;">
+            🎁
+        </div>
+    `;
+
+    document.getElementById("gift").addEventListener("click", () => {
+
+        game.innerHTML = `
+            <h2>💖 С Днём Рождения! 💖</h2>
+
+            <p>
+                Пусть каждый день приносит счастье,
+                улыбки и море радости!
+            </p>
+
+            <div style="font-size:70px;">
+                🎂🎉🌸🐱❤️
+            </div>
+        `;
+
+    });
+
+}
 </script>
 
 
