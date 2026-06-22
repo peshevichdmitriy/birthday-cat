@@ -165,6 +165,12 @@ function startHeartGame() {
 
         const heart = document.createElement("span");
 
+        heart.style.width = "60px";
+        heart.style.height = "60px";
+        heart.style.display = "flex";
+        heart.style.alignItems = "center";
+        heart.style.justifyContent = "center";
+
         heart.className = "heart";
         heart.textContent = "❤️";
 
@@ -174,8 +180,8 @@ function startHeartGame() {
         let x = Math.random() * size;
         let y = Math.random() * height;
 
-        let dx = (Math.random() * 4 + 2) * (Math.random() > 0.5 ? 1 : -1);
-        let dy = (Math.random() * 4 + 2) * (Math.random() > 0.5 ? 1 : -1);
+        let dx = (Math.random() * 1.5 + 0.5) * (Math.random() > 0.5 ? 1 : -1);
+        let dy = (Math.random() * 1.5 + 0.5) * (Math.random() > 0.5 ? 1 : -1);
 
         heart.style.left = x + "px";
         heart.style.top = y + "px";

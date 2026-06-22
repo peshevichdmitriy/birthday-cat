@@ -4,6 +4,8 @@ body {
   background: #ffd6e7;
   position: relative;
 
+  overflow: hidden;
+
   display: flex;
   justify-content: center;
   align-items: center;
@@ -219,8 +221,10 @@ body {
 #game{
     position: relative;
     width: 600px;
+    max-width: 90vw;
     height: 300px;
-    margin: 20px auto 0;
+    margin: 20px auto;
+    overflow: hidden;   /* ← самое главное */
 }
 
 .heart{
@@ -228,7 +232,13 @@ body {
     font-size:40px;
     cursor:pointer;
     user-select:none;
-    transition:transform .2s;
+
+    width:60px;
+    height:60px;
+
+    display:flex;
+    align-items:center;
+    justify-content:center;
 }
 
 .heart:hover{
