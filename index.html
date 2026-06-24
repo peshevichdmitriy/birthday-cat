@@ -61,7 +61,7 @@ function startGame() {
     btn.style.display = "none";
 
     text.textContent =
-        "Для красивого подарка нужен бантик. Найди его! 🎀";
+    "Для классного подарка нужно немного магии. Найди волшебную звездочку! ⭐";
 
     showBowGame();
 }
@@ -75,17 +75,17 @@ function showBowGame() {
     items.style.display = "flex";
 
     items.innerHTML = `
-        <span class="item wrong">⭐</span>
         <span class="item wrong">🐟</span>
-        <span class="item" id="bow">🎀</span>
         <span class="item wrong">🧶</span>
+        <span class="item" id="star">⭐</span>
         <span class="item wrong">🌸</span>
+        <span class="item wrong">🍀</span>
     `;
 
-    document.getElementById("bow").addEventListener("click", () => {
+    document.getElementById("star").addEventListener("click", () => {
 
         text.textContent =
-            "🎀 Отлично! Бантик найден! Теперь нужен красивый цветок.";
+            "⭐ Волшебная звездочка найдена! Теперь можно украсить этот день прекрасным цветком. 🌸";
 
         showFlowerGame();
 
@@ -113,7 +113,7 @@ function showFlowerGame() {
         items.style.display = "none";
 
         text.textContent =
-            "🌸 Отлично! Теперь поймай 5 сердечек!";
+            "🌸 Отлично! Теперь поймай 5 сердечек, чтобы тебя окружила любовь!";
 
         startHeartGame();
 
@@ -239,32 +239,47 @@ function startHeartGame() {
 
 function showGift() {
 
-    text.textContent =
-        "🎁 Ты всё собрала! Открой подарок!";
+    // Скрываем всё кроме кота
+    text.style.display = "none";
+    game.style.display = "none";
+    items.style.display = "none";
 
-    game.innerHTML = `
-        <div id="gift" style="font-size:90px; cursor:pointer;">
-            🎁
-        </div>
-    `;
+    // Находим кота
+    const cat = document.querySelector(".cat");
 
-    document.getElementById("gift").addEventListener("click", () => {
+    // Через 10 секунд показываем продолжение
+    setTimeout(() => {
+
+        text.style.display = "block";
+        game.style.display = "block";
+
+        text.textContent =
+            "🐱 Прости, засмотрелся на тебя такую красивую... Теперь можешь открывать подарок 💖";
 
         game.innerHTML = `
-            <h2>💖 С Днём Рождения! 💖</h2>
-
-            <p>
-                Пусть каждый день приносит счастье,
-                улыбки и море радости!
-            </p>
-
-            <div style="font-size:70px;">
-                🎂🎉🌸🐱❤️
+            <div id="gift" style="font-size:90px; cursor:pointer;">
+                🎁
             </div>
         `;
 
-    });
+        document.getElementById("gift").addEventListener("click", () => {
 
+            game.innerHTML = `
+                <h2>💖 С Днём Рождения! 💖</h2>
+
+                <p>
+                    Пусть каждый день приносит счастье,
+                    улыбки и море радости!
+                </p>
+
+                <div style="font-size:70px;">
+                    🎂🎉🌸🐱❤️
+                </div>
+            `;
+
+        });
+
+    }, 10000); // 10 секунд
 }
 </script>
 
