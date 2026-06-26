@@ -264,30 +264,106 @@ function showGift() {
 
         document.getElementById("gift").addEventListener("click", () => {
 
-            game.innerHTML = `
-                <h2>🐱 Знаешь...
-
-                    Пока ты открывала подарок,
-                    я загадал одно желание.</h2>
-
-                <p>
-                    Чтобы этот день подарил тебе столько счастья,
-                    сколько улыбок ты даришь другим.
-                </p>
-
-                <div style="font-size:60px;">
-                    С днем Рождения !!!
-                </div>
-                <p style="
-            font-size:12px;
-            opacity:0.6;
-            margin-top:20px;
+    game.innerHTML = `
+        <div id="finalMessage" style="
+            display:flex;
+            justify-content:center;
+            align-items:center;
+            flex-direction:column;
+            min-height:300px;
+            text-align:center;
+            padding:20px;
         ">
-            Made with ❤️ and a little bit of JavaScript by kotik Dimka
-        </p>
-            `;
+            <p id="message" style="
+                font-size:28px;
+                line-height:1.6;
+                opacity:0;
+                transition:opacity .8s;
+            "></p>
+        </div>
+    `;
 
-        });
+    const message = document.getElementById("message");
+
+    const messages = [
+        { text: "💖 С Днём Рождения! 💖", delay: 2500 },
+
+        { text: "Знаешь...", delay: 2200 },
+
+        { text: "Все эти звёздочки ⭐", delay: 1800 },
+
+        { text: "цветочки 🌸", delay: 1800 },
+
+        { text: "сердечки ❤️", delay: 1800 },
+
+        { text: "и даже этот подарок 🎁", delay: 2500 },
+
+        { text: "На самом деле нужны были только для одного...", delay: 3000 },
+
+        { text: "Чтобы увидеть твою улыбку.", delay: 4000 },
+
+        {
+            text: "Потому что она стоит намного больше,<br>чем всё, что поместилось в эту коробку.",
+            delay: 5000
+        },
+
+        { text: "💖 С Днём Рождения, красавица. 💖", delay: 4000 }
+    ];
+
+    let index = 0;
+
+    function showMessage() {
+
+        message.style.opacity = "0";
+
+        setTimeout(() => {
+
+            message.innerHTML = messages[index].text;
+            message.style.opacity = "1";
+
+            setTimeout(() => {
+
+                index++;
+
+                if (index < messages.length) {
+
+                    showMessage();
+
+                } else {
+
+                    setTimeout(() => {
+
+                        game.innerHTML = `
+                            <div style="text-align:center;">
+                                <div style="font-size:80px;">
+                                    🎂🎉🌸🐱❤️
+                                </div>
+
+                                <h2>Спасибо, что прошла этот маленький квест ❤️</h2>
+
+                                <p style="
+                                    margin-top:30px;
+                                    opacity:.6;
+                                    font-size:12px;
+                                ">
+                                    Made with ❤️ and a little bit of JavaScript
+                                </p>
+                            </div>
+                        `;
+
+                    }, 1500);
+
+                }
+
+            }, messages[index].delay);
+
+        }, 800);
+
+    }
+
+    showMessage();
+
+});
 
     }, 5000); // 10 секунд
 }
