@@ -374,3 +374,10 @@ body {
     transform:scale(.96);
 
 }
+.polaroid-final {
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: #ffd6e7;
+}

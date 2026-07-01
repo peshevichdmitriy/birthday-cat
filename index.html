@@ -54,11 +54,12 @@
 
 <script>
     const text = document.getElementById("text");
-const btn = document.getElementById("nextBtn");
-const items = document.getElementById("items");
-const game = document.getElementById("game");
-const music = document.getElementById("bgMusic");
-let sceneActive = true;
+    const btn = document.getElementById("nextBtn");
+    const items = document.getElementById("items");
+    const game = document.getElementById("game");
+    const music = document.getElementById("bgMusic");
+    let sceneActive = true;
+    let typingActive = true;
 
 btn.addEventListener("click", startGame);
 
@@ -296,9 +297,7 @@ function startHeartGame() {
 // ==========================
 
 function showGift() {
-
-    let typingActive = true;
-    typingActive = false;
+    console.log("SHOW GIFT START");
 
     // Скрываем всё кроме кота
     text.style.display = "none";
@@ -374,6 +373,7 @@ function showGift() {
     let index = 0;
 
     function showMessage() {
+    console.log("SHOW MESSAGE START");
 
     if (!typingActive) return;
 
@@ -395,22 +395,20 @@ function showGift() {
             if (index < messages.length) {
                 showMessage();
             } else {
+                typingActive = false;
 
                 setTimeout(() => {
 
-                    game.innerHTML = `
-                        <div class="polaroid">
+                    const scene = document.querySelector(".scene");
 
-                            <img src="photo.jpg" alt="Фото">
-
+                    scene.innerHTML = `
+                        <div class="polaroid-final">
+                            <div class="polaroid">
+                                <img src="photo.jpg" alt="Фото">
                             <div class="polaroid-date">
                                 01.07.2026 ❤️
                             </div>
-
-                        </div>
-
-                        <div id="letterBtn" class="letter-button">
-                            ✉️ Открыть письмо
+                            </div>
                         </div>
                     `;
 
