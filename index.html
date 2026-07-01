@@ -61,6 +61,48 @@ const music = document.getElementById("bgMusic");
 
 btn.addEventListener("click", startGame);
 
+// ==========================
+// Волшебные частицы
+// ==========================
+
+const particles = ["⭐", "🌸", "❤️"];
+
+function createParticle(){
+
+    const particle = document.createElement("div");
+
+    particle.className = "particle";
+
+    particle.textContent =
+        particles[Math.floor(Math.random() * particles.length)];
+
+    particle.style.left =
+        Math.random() * window.innerWidth + "px";
+
+    particle.style.top =
+        window.innerHeight + 40 + "px";
+
+    particle.style.setProperty(
+        "--drift",
+        (Math.random() * 160 - 80) + "px"
+    );
+
+    particle.style.animationDuration =
+        (7 + Math.random() * 5) + "s";
+
+    particle.style.fontSize =
+        (18 + Math.random() * 18) + "px";
+
+    document.body.appendChild(particle);
+
+    particle.addEventListener("animationend", () => {
+
+        particle.remove();
+
+    });
+
+}
+
 function startGame() {
 
     music.volume = 0.3;   // громкость 30%
@@ -72,6 +114,7 @@ function startGame() {
     "Для классного подарка нужно немного магии. Найди волшебную звездочку! ⭐";
 
     showBowGame();
+    setInterval(createParticle, 1200);
 }
 // ==========================
 // Игра с бантиком
@@ -341,22 +384,20 @@ function showGift() {
                     setTimeout(() => {
 
                         game.innerHTML = `
-                            <div style="text-align:center;">
-                                <div style="font-size:80px;">
-                                    🎂🎉🌸🐱❤️
+                            <div class="polaroid">
+
+                            <img src="photo.jpg" alt="Фото">
+
+                                <div class="polaroid-date">
+                                    01.07.2026 ❤️
                                 </div>
 
-                                <h2>Спасибо, что прошла этот маленький квест ❤️</h2>
-
-                                <p style="
-                                    margin-top:30px;
-                                    opacity:.6;
-                                    font-size:12px;
-                                ">
-                                    Made with ❤️ and a little bit of JavaScript
-                                </p>
                             </div>
-                        `;
+
+                            <div id="letterBtn" class="letter-button">
+                                ✉️ Открыть письмо
+                            </div>
+                    `;
 
                     }, 1500);
 

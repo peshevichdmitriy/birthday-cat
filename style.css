@@ -15,6 +15,8 @@ body {
 
 .scene {
   text-align: center;
+  position: relative;
+  z-index: 1;
 }
 
 .hint {
@@ -243,4 +245,132 @@ body {
 
 .heart:hover{
     transform:scale(1.2);
+}
+
+/* ==========================
+   Волшебные частицы
+========================== */
+
+.particle{
+    position:fixed;
+    left:0;
+    top:0;
+
+    font-size:26px;
+
+    pointer-events:none;
+    user-select:none;
+
+    z-index:0;
+
+    animation: floatUp linear forwards;
+}
+
+@keyframes floatUp{
+
+    0%{
+        transform:translate(0,0) rotate(0deg);
+        opacity:0;
+    }
+
+    10%{
+        opacity:.9;
+    }
+
+    100%{
+        transform:
+            translate(var(--drift), -120vh)
+            rotate(360deg);
+
+        opacity:0;
+    }
+
+}
+
+.polaroid{
+
+    width:280px;
+    margin:40px auto;
+
+    background:white;
+
+    padding:14px 14px 45px;
+
+    border-radius:8px;
+
+    box-shadow:
+        0 12px 30px rgba(0,0,0,.18);
+
+    transform:rotate(-2deg);
+
+    animation:dropPhoto .8s ease;
+}
+
+.polaroid img{
+
+    width:100%;
+
+    display:block;
+
+    border-radius:4px;
+}
+
+.polaroid-date{
+
+    margin-top:18px;
+
+    font-size:18px;
+
+    color:#666;
+
+    font-family:cursive;
+}
+
+@keyframes dropPhoto{
+
+    from{
+
+        opacity:0;
+
+        transform:
+            translateY(-80px)
+            rotate(-10deg);
+
+    }
+
+    to{
+
+        opacity:1;
+
+        transform:
+            translateY(0)
+            rotate(-2deg);
+
+    }
+
+}
+
+.letter-button{
+
+    margin-top:30px;
+
+    display:inline-block;
+
+    padding:14px 24px;
+
+    border-radius:30px;
+
+    background:white;
+
+    cursor:pointer;
+
+    box-shadow:0 8px 18px rgba(0,0,0,.12);
+
+    transition:.25s;
+}
+
+.letter-button:active{
+
+    transform:scale(.96);
+
 }
