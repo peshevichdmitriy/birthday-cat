@@ -373,7 +373,6 @@ function showGift() {
     let index = 0;
 
     function showMessage() {
-    console.log("SHOW MESSAGE START");
 
     if (!typingActive) return;
 
@@ -395,25 +394,36 @@ function showGift() {
             if (index < messages.length) {
                 showMessage();
             } else {
+
                 typingActive = false;
 
                 setTimeout(() => {
 
                     const scene = document.querySelector(".scene");
 
-                    scene.innerHTML = `
-                        <div class="polaroid-final">
-                            <div class="polaroid">
-                                <img src="photo.jpg" alt="Фото">
-                            <div class="polaroid-date">
-                                01.07.2026 ❤️
+                    scene.classList.add("fade-out");
+
+                    setTimeout(() => {
+
+                        scene.innerHTML = `
+                            <div class="final-screen">
+                                <div class="polaroid polaroid-hidden">
+                                    <img src="photo.jpg">
+                                    <div class="polaroid-date">01.07.2026 ❤️</div>
+                                </div>
                             </div>
-                            </div>
-                        </div>
-                    `;
+                        `;
+
+                        scene.classList.remove("fade-out");
+
+                        requestAnimationFrame(() => {
+                            const polaroid = document.querySelector(".polaroid");
+                            polaroid.classList.remove("polaroid-hidden");
+                        });
+
+                    }, 800);
 
                 }, 1500);
-
             }
 
         }, messages[index].delay);
