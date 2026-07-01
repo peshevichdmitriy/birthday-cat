@@ -58,8 +58,13 @@ const btn = document.getElementById("nextBtn");
 const items = document.getElementById("items");
 const game = document.getElementById("game");
 const music = document.getElementById("bgMusic");
+let sceneActive = true;
 
 btn.addEventListener("click", startGame);
+
+function stopScene() {
+    sceneActive = false;
+}
 
 // ==========================
 // Волшебные частицы
@@ -288,6 +293,7 @@ function startHeartGame() {
 // ==========================
 
 function showGift() {
+    stopScene();
 
     // Скрываем всё кроме кота
     text.style.display = "none";
@@ -364,50 +370,57 @@ function showGift() {
 
     function showMessage() {
 
-        message.style.opacity = "0";
+    if (!sceneActive) return;
+
+    message.style.opacity = "0";
+
+    setTimeout(() => {
+
+        if (!sceneActive) return;
+
+        message.innerHTML = messages[index].text;
+        message.style.opacity = "1";
 
         setTimeout(() => {
 
-            message.innerHTML = messages[index].text;
-            message.style.opacity = "1";
+            if (!sceneActive) return;
 
-            setTimeout(() => {
+            index++;
 
-                index++;
+            if (index < messages.length) {
 
-                if (index < messages.length) {
+                showMessage();
 
-                    showMessage();
+            } else {
 
-                } else {
+                setTimeout(() => {
 
-                    setTimeout(() => {
+                    if (!sceneActive) return;
 
-                        game.innerHTML = `
-                            <div class="polaroid">
+                    game.innerHTML = `
+                        <div class="polaroid">
 
                             <img src="photo.jpg" alt="Фото">
 
-                                <div class="polaroid-date">
-                                    01.07.2026 ❤️
-                                </div>
-
+                            <div class="polaroid-date">
+                                01.07.2026 ❤️
                             </div>
 
-                            <div id="letterBtn" class="letter-button">
-                                ✉️ Открыть письмо
-                            </div>
+                        </div>
+
+                        <div id="letterBtn" class="letter-button">
+                            ✉️ Открыть письмо
+                        </div>
                     `;
 
-                    }, 1500);
+                }, 1500);
 
-                }
+            }
 
-            }, messages[index].delay);
+        }, messages[index].delay);
 
-        }, 800);
-
-    }
+    }, 800);
+}
 
     showMessage();
 
