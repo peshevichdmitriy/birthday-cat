@@ -48,15 +48,23 @@
         </div>
 </div>
 
+<audio id="bgMusic" loop>
+    <source src="music.mp3" type="audio/mpeg">
+</audio>
+
 <script>
     const text = document.getElementById("text");
 const btn = document.getElementById("nextBtn");
 const items = document.getElementById("items");
 const game = document.getElementById("game");
+const music = document.getElementById("bgMusic");
 
 btn.addEventListener("click", startGame);
 
 function startGame() {
+
+    music.volume = 0.3;   // громкость 30%
+    music.play();
 
     btn.style.display = "none";
 
@@ -65,7 +73,6 @@ function startGame() {
 
     showBowGame();
 }
-
 // ==========================
 // Игра с бантиком
 // ==========================
