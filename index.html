@@ -110,6 +110,9 @@ function createParticle(){
 
 function startGame() {
 
+    sceneActive = true;
+    typingActive = true;
+
     music.volume = 0.3;   // громкость 30%
     music.play();
 
@@ -293,7 +296,9 @@ function startHeartGame() {
 // ==========================
 
 function showGift() {
-    stopScene();
+
+    let typingActive = true;
+    typingActive = false;
 
     // Скрываем всё кроме кота
     text.style.display = "none";
@@ -370,32 +375,28 @@ function showGift() {
 
     function showMessage() {
 
-    if (!sceneActive) return;
+    if (!typingActive) return;
 
     message.style.opacity = "0";
 
     setTimeout(() => {
 
-        if (!sceneActive) return;
+        if (!typingActive) return;
 
         message.innerHTML = messages[index].text;
         message.style.opacity = "1";
 
         setTimeout(() => {
 
-            if (!sceneActive) return;
+            if (!typingActive) return;
 
             index++;
 
             if (index < messages.length) {
-
                 showMessage();
-
             } else {
 
                 setTimeout(() => {
-
-                    if (!sceneActive) return;
 
                     game.innerHTML = `
                         <div class="polaroid">
