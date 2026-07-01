@@ -337,8 +337,6 @@ function showGift() {
             <p id="message" style="
                 font-size:28px;
                 line-height:1.6;
-                opacity:0;
-                transition:opacity .8s;
             "></p>
         </div>
     `;
@@ -376,15 +374,18 @@ function showGift() {
 
     if (!typingActive) return;
 
-    message.style.opacity = "0";
+    // Сразу убираем старый текст
+    message.innerHTML = "";
 
+    // Небольшая пауза перед следующим сообщением
     setTimeout(() => {
 
         if (!typingActive) return;
 
+        // Показываем новый текст
         message.innerHTML = messages[index].text;
-        message.style.opacity = "1";
 
+        // Ждём указанное время
         setTimeout(() => {
 
             if (!typingActive) return;
@@ -392,43 +393,45 @@ function showGift() {
             index++;
 
             if (index < messages.length) {
+
                 showMessage();
+
             } else {
 
                 typingActive = false;
 
+                // Плавно скрываем старую сцену
+                const scene = document.querySelector(".scene");
+
+                scene.classList.add("fade-out");
+
                 setTimeout(() => {
 
-                    const scene = document.querySelector(".scene");
+                    scene.innerHTML = `
+                        <div class="final-screen">
+                            <div class="polaroid">
+                                <img src="photo.jpg" alt="Фото">
 
-                    scene.classList.add("fade-out");
-
-                    setTimeout(() => {
-
-                        scene.innerHTML = `
-                            <div class="final-screen">
-                                <div class="polaroid polaroid-hidden">
-                                    <img src="photo.jpg">
-                                    <div class="polaroid-date">01.07.2026 ❤️</div>
+                                <div class="polaroid-date">
+                                    01.07.2026 ❤️
                                 </div>
                             </div>
-                        `;
 
-                        scene.classList.remove("fade-out");
+                            <div id="letterBtn" class="letter-button">
+                                ✉️ Открыть письмо
+                            </div>
+                        </div>
+                    `;
 
-                        requestAnimationFrame(() => {
-                            const polaroid = document.querySelector(".polaroid");
-                            polaroid.classList.remove("polaroid-hidden");
-                        });
+                    scene.classList.remove("fade-out");
 
-                    }, 800);
+                }, 800);
 
-                }, 1500);
             }
 
         }, messages[index].delay);
 
-    }, 800);
+    }, 300);
 }
 
     showMessage();
